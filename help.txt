@@ -1,0 +1,78 @@
+complete project repo:
+https://github.com/kels-orien/nft-marketplace-part-1
+
+tatorial:
+https://dev.to/kels_orien/building-a-full-stack-nft-market-place-with-near-protocol-and-reactjs-ak9
+
+
+https://docs.near.org/docs/tutorials/contracts/nfts/introduction
+
+git clone https://github.com/near-examples/rust-template.git
+
+copy contract from this link:
+https://github.com/near-examples/nft-tutorial
+
+fronend help:
+https://www.freecodecamp.org/news/how-to-up-a-react-app-with-parcel
+
+build.sh
+
+create sub account:
+near create-account sub.mynftcontract.testnet --masterAccount mynftcontract.testnet
+near state sub.mynftcontract.testnet 
+
+deploy:
+near deploy --accountId sub.mynftcontract.testnet --wasmFile /home/abdullah/near/nft-marketplace-repos/nft_contract/res/nft_contract.wasm
+near call sub.mynftcontract.testnet new_default_meta '{"owner_id": "sub.mynftcontract.testnet"}' --accountId sub.mynftcontract.testnet
+near view sub.mynftcontract.testnet nft_metadata
+
+Minting Token:
+near call sub.mynftcontract.testnet nft_mint '{"token_id": "token-1", "metadata": {"title": "My NFT 1", "description": "The Team Most Certainly Goes :)", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "mynftcontract.testnet"}' --accountId mynftcontract.testnet --amount 0.1
+near view sub.mynftcontract.testnet nft_token '{"token_id": "token-1"}'
+
+Transfer:
+near call sub.mynftcontract.testnet nft_transfer '{"receiver_id": "mynftmarket.testnet", "token_id": "token-1", "memo": "Go Team :)"}' --accountId mynftcontract.testnet --depositYocto 1
+near view sub.mynftcontract.testnet nft_token '{"token_id": "token-1"}'
+
+
+
+part 2
+https://dev.to/kels_orien/building-a-full-stack-nft-market-place-with-near-protocol-and-reactjs-part-2-5136
+
+
+copy "market-contract" folder from this repo "https://github.com/kels-orien/nft-marketplace-part-2"
+
+create sub account:
+near create-account sub.mynftmarket.testnet --masterAccount mynftcontract.testnet
+near state sub.mynftmarket.testnet 
+
+build:
+./build.sh
+
+deploy:
+near deploy sub.mynftmarket.testnet --wasmFile /home/abdullah/near/nft-marketplace-repos/market_contract/res/market_contract.wasm
+near call sub.mynftmarket.testnet new '{"owner_id": "sub.mynftmarket.testnet"}' --accountId mynftmarket.testnet
+
+
+
+
+storage_minimum_balance:
+near view sub.mynftmarket.testnet storage_minimum_balance
+storage_deposit:
+near call nft-marketplace.testnet storage_deposit --accountId mynftmarket.testnet --depositYocto 10000000000000000000000
+nft_approve:
+
+ear call nft-marketplace.testnet nft_approve '{"token_id":"Nft 1"}' --accountId marketplace.testnet --depositYocto 10000000000000000000000
+
+token_id: token_id,
+        account_id: nearConfig.marketContractName,
+        msg: JSON.stringify(sale_conditions),
+      },
+      attachedDeposit: parseNearAmount("0.01"),
+
+
+
+
+
+
+
