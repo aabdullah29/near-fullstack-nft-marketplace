@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/home/abdullah/near/nft-marketplace-repos/nft-contract/target/wasm32-unknown-unknown/release/build/typenum-3c161335f5bb20eb/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/home/abdullah/near/nft-marketplace-repos/nft-contract/target/wasm32-unknown-unknown/release/build/typenum-3c161335f5bb20eb/out/op.rs
